@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent';
+import './DigimonDetail.css'
 
 export default class DigimonDetail extends Component {
     state = {
@@ -31,13 +32,12 @@ export default class DigimonDetail extends Component {
                 level = 'Mega';
                 break;
         }
-        console.log(level);
         return level;
 
     }
     render() {
         return (
-            <div>
+            <div className='digimon_details'>
                 <h2>{this.state.digimon.digimon_name}</h2>
                 <p>Level: {this.digimonLevel(this.state.digimon.digimon_level)}</p>
                 <p>Type: {this.state.digimon.digimon_type}</p>

@@ -1,0 +1,12 @@
+.listContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    border: 2px solid black;
+    background-color: lightgray;
+}
+
+.digimonList {
+    margin: 0;
+    border: 2px solid black
+}
