@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import request from 'superagent';
 
 export default class List extends Component {
@@ -17,7 +18,14 @@ export default class List extends Component {
             <div>
                    {this.state.items.map(digimon =>
                     <li className="digimonList" >
+                        <Link to={`/digimon/${digimon.id}`}>
                             <h2>{digimon.digimon_name}</h2>
+                        </Link>
+                            <p>{digimon.digimon_level}</p>
+                            <p>{digimon.digimon_type}</p>
+                            <p>{digimon.digimon_attribute}</p>
+                            <p>{digimon.digimon_attack}</p>
+                            <p>{digimon.appeared_in_anime}</p>
                     </li >
                     )}  
             </div>
