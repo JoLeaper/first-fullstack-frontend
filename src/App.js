@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import List from './List.js'
 import AdminPage from './AdminPage.js'
+import HomePage from './HomePage.js'
+import Header from './Header.js'
 import DigimonDetail from './DigimonDetail.js'
 import './App.css'
 
@@ -9,7 +11,12 @@ export default class App extends Component {
     render() {
         return (
             <div className='container'>
+                <Header />
                 <Switch>
+                    <Route
+                    path="/home"
+                    render={(routerProps) => <HomePage {...routerProps} />}
+                    />
                     <Route
                     path="/list"
                     render={(routerProps) => <List {...routerProps} />}

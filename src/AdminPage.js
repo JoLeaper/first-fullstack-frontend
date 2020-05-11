@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
+import './AdminPage.css'
 
 export default class AdminPage extends Component {
     state = {
@@ -15,7 +16,6 @@ export default class AdminPage extends Component {
         const newState = {}
         newState[e.target.name] = e.target.value;
         this.setState(newState);
-        console.log(this.state);
     }
 
     handleSubmit = async (e) => {
@@ -23,38 +23,39 @@ export default class AdminPage extends Component {
         const newDigimon = await request.post(`https://secure-caverns-93128.herokuapp.com/digimon`, this.state);
         return newDigimon.body;
     }
+
     render() {
         return (
             <div className="formbox">
-                <form onSubmit={this.handleSubmit}>
+                <form className="digimonAdd" onSubmit={this.handleSubmit}>
                     <label>
-                        Digimon Name
+                        <p>Digimon Name</p>
                         <input onChange={this.handleChange} value={this.state.digimon_name} name="digimon_name"/>
                     </label>
                     <label>
-                        Digimon Level
+                        <p>Digimon Level</p>
                         <input onChange={this.handleChange} value={this.state.digimon_level} name="digimon_level" type="number" />
                     </label>
                     <label>
-                        Digimon Type
+                       <p>Digimon Type</p>
                         <input onChange={this.handleChange} value={this.state.digimon_type} name="digimon_type" />
                     </label>
                     <label>
-                        Digimon Attribute
+                    <p>Digimon Attribute</p>
                         <input onChange={this.handleChange} value={this.state.digimon_attribute} name="digimon_attribute" />
                     </label>
                     <label>
-                        Signature Attack
+                        <p>Signature Attack</p>
                         <input onChange={this.handleChange} value={this.state.digimon_attack} name="digimon_attack"/>
                     </label>
                     <label>
-                        Appeared In Anime?
+                    <p>Appeared In Anime?</p>
                         Yes
                         <input onChange={this.handleChange} checked={this.state.appeared_in_anime === 'true'} name="appeared_in_anime" type="radio" value="true" />
                         No
-                        <input onChange={this.handleChange} checked={this.state.appeared_in_anime === 'true'} name="appeared_in_anime" type="radio" value="false" />
+                        <input onChange={this.handleChange} checked={this.state.appeared_in_anime === 'false'} name="appeared_in_anime" type="radio" value="false" />
                     </label>
-                    <button>Submit</button>
+                    <button className='submit'>Submit</button>
                 </form>
                 
             </div>
