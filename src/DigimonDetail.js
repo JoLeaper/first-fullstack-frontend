@@ -12,6 +12,14 @@ export default class DigimonDetail extends Component {
             digimon: fetchedDigimon.body
         })
     }
+    handleUpdate = async() => {
+        
+
+    }
+    handleDelete = async() => {
+        await request.delete(`https://secure-caverns-93128.herokuapp.com/digimon/${this.props.match.params.id}`);
+        this.props.history.push('/list');
+    }
     digimonLevel(levelNum) {
         console.log(levelNum)
         let level;
@@ -46,6 +54,8 @@ export default class DigimonDetail extends Component {
                 <p>Appeared In Anime? {(this.state.digimon.appeared_in_anime)
                 ? 'Yes'
                 : 'No'}</p>
+                <button onClick={this.handleUpdate}>Update</button>
+                <button onClick={this.handleDelete}>Delete</button>
             </div>
         )
     }

@@ -15,6 +15,7 @@ export default class List extends Component {
         const digimonAttribute = await request.get(`https://secure-caverns-93128.herokuapp.com/attribute`);
         this.setState({ fetchedItems: fetchedDigimon.body,
                         attributes: digimonAttribute.body });
+        console.log(this.state.fetchedItems);
     }
     handleChange = async (e) => {
         this.setState({ filter: e.target.value })
