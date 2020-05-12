@@ -1,0 +1,21 @@
+.digimonAdd {
+    border: 2px solid black;
+    background-color: lightgray;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    height: auto;
+}
+
+.button {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+p {
+    margin: 0
+}

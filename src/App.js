@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
+import List from './List.js'
+import AdminPage from './AdminPage.js'
+import HomePage from './HomePage.js'
+import Header from './Header.js'
+import DigimonDetail from './DigimonDetail.js'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+    render() {
+        return (
+            <div className='container'>
+                <Header />
+                <Switch>
+                    <Route
+                    path="/home"
+                    render={(routerProps) => <HomePage {...routerProps} />}
+                    />
+                    <Route
+                    path="/list"
+                    render={(routerProps) => <List {...routerProps} />}
+                    />
+                    <Route
+                    path="/admin"
+                    render={(routerProps) => <AdminPage {...routerProps} />}
+                    />
+                    <Route
+                    path="/digimon/:id"
+                    render={(routerProps) => <DigimonDetail {...routerProps} />}
+                    />
+                </Switch>
+                </div>
+        )
+    }
 }
-
-export default App;

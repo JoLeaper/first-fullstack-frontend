@@ -1,0 +1,12 @@
+.digimon_details {
+    border: 2px solid black;
+    background-color: lightgray;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    height: auto;
+}
