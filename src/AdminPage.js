@@ -9,7 +9,8 @@ export default class AdminPage extends Component {
         digimon_type: '',
         digimon_attribute: '',
         digimon_attack: '',
-        appeared_in_anime: null
+        appeared_in_anime: null,
+        user_id: null
     }
 
     handleChange = async (e) => {
@@ -25,6 +26,7 @@ export default class AdminPage extends Component {
     }
 
     render() {
+        
         return (
             <div className="formbox">
                 <form className="digimonAdd" onSubmit={this.handleSubmit}>
@@ -54,6 +56,10 @@ export default class AdminPage extends Component {
                         <input onChange={this.handleChange} checked={this.state.appeared_in_anime === 'true'} name="appeared_in_anime" type="radio" value="true" />
                         No
                         <input onChange={this.handleChange} checked={this.state.appeared_in_anime === 'false'} name="appeared_in_anime" type="radio" value="false" />
+                    </label>
+                    <label>
+                        <p>Partner Id</p>
+                        <input onChange={this.handleChange} value={this.state.user_id} name="user_id" type="number" />
                     </label>
                     <button className='submit'>Submit</button>
                 </form>

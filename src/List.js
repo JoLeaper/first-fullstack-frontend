@@ -5,16 +5,22 @@ import './List.css'
 
 export default class List extends Component {
     state = {
-        items: []
+        fetchedItems: [],
+        attributes: [],
+        filter: ''
     }
 
     componentDidMount = async () => {
         const fetchedDigimon = await request.get(`https://secure-caverns-93128.herokuapp.com/digimon`);
-        console.log(fetchedDigimon);
-        this.setState({ items: fetchedDigimon.body });
+        const digimonAttribute = await request.get(`https://secure-caverns-93128.herokuapp.com/attribute`);
+        this.setState({ fetchedItems: fetchedDigimon.body,
+                        attributes: digimonAttribute.body });
     }
+    handleChange = async (e) => {
+        this.setState({ filter: e.target.value })
+    }
+
     digimonLevel(levelNum) {
-        console.log(levelNum)
         let level;
         switch(levelNum) {
             default: 
@@ -39,7 +45,19 @@ export default class List extends Component {
     render() {
         return (
             <div className="listContainer">
-                   {this.state.items.map(digimon =>
+                <div className="dropdown_box">
+                    <select onChange={this.handleChange} className="attribute_filter">
+                        <option value=''>All</option>
+                        {this.state.attributes.map(attribute =>
+                            <option value={attribute.digimon_attribute}>{attribute.digimon_attribute}</option>)}
+                    </select>
+                </div>
+                   {this.state.fetchedItems
+                   .filter(digimon => {
+                       if (!this.state.filter) return true;
+                       return digimon.digimon_attribute === this.state.filter
+                   })
+                   .map(digimon =>
                     <ul className="digimonList" >
                         <Link to={`/digimon/${digimon.id}`}>
                             <h2>{digimon.digimon_name}</h2>
